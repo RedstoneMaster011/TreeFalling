@@ -5,16 +5,13 @@ import dev.redstone.treefalling.physics.TreeFallingBodys;
 import dev.redstone.treefalling.util.WaitBeforeExecuting;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.world.World;
 import net.xmx.velthoric.physics.body.manager.VxBodyManager;
 import net.xmx.velthoric.physics.body.manager.VxRemovalReason;
 import net.xmx.velthoric.physics.body.type.VxBody;
 import net.xmx.velthoric.physics.world.VxPhysicsWorld;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Treefalling implements ModInitializer {
 

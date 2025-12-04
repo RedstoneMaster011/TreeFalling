@@ -14,6 +14,7 @@ import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.network.ServerPlayerInteractionManager;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
@@ -85,7 +86,7 @@ public class TreeHarvestMixin {
                             ItemStack stack = player.getMainHandStack();
 
                             if (!stack.isEmpty() && stack.isDamageable()) {
-                                stack.setDamage(stack.getDamage() + 1);
+                                stack.damage(1, player, EquipmentSlot.MAINHAND);
                             }
                         }
                     }
