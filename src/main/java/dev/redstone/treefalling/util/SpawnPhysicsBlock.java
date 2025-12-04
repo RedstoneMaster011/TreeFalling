@@ -14,6 +14,8 @@ import net.xmx.velthoric.physics.body.manager.VxBodyManager;
 import net.xmx.velthoric.physics.body.manager.VxRemovalReason;
 import net.xmx.velthoric.physics.world.VxPhysicsWorld;
 
+import java.util.Random;
+
 public class SpawnPhysicsBlock {
     public static void spawn(BlockState state, World world, BlockPos pos) {
         VxPhysicsWorld physicsWorld = VxPhysicsWorld.get(world.getRegistryKey());
@@ -26,18 +28,25 @@ public class SpawnPhysicsBlock {
         Quat rot = Quat.sIdentity();
         VxTransform trans = new VxTransform(blockPOS, rot);
 
-        BlockRigidBody blockBody = bodyManager.createRigidBody(
-                VxRegisteredBodies.BLOCK,
-                trans,
-                EActivation.Activate,
-                b -> b.setRepresentedBlockState(originalState != null ? originalState : Blocks.STONE.getDefaultState())
-        );
+        Random random = new Random();
 
-        if (blockBody == null) return;
-        WaitBeforeExecuting.execute(250, () -> {
+        int i = 0;
+        for (; i != 2; i++) {
+            if (random.nextInt(2) != 1) return;
 
-            bodyManager.removeBody(blockBody.getPhysicsId(), VxRemovalReason.DISCARD);
-        });
+            BlockRigidBody blockBody = bodyManager.createRigidBody(
+                    VxRegisteredBodies.BLOCK,
+                    trans,
+                    EActivation.Activate,
+                    b -> b.setRepresentedBlockState(originalState != null ? originalState : Blocks.STONE.getDefaultState())
+            );
+
+            if (blockBody == null) return;
+            WaitBeforeExecuting.execute(250, () -> {
+
+                bodyManager.removeBody(blockBody.getPhysicsId(), VxRemovalReason.DISCARD);
+            });
+        }
     }
 }
 
