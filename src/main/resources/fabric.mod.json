@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "treefalling",
+  "version": "${version}",
+  "name": "TreeFalling",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/treefalling/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "dev.redstone.treefalling.client.TreefallingDataGenerator"
+    ],
+    "client": [
+      "dev.redstone.treefalling.client.TreefallingClient"
+    ],
+    "main": [
+      "dev.redstone.treefalling.Treefalling"
+    ]
+  },
+  "mixins": [
+    "treefalling.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
