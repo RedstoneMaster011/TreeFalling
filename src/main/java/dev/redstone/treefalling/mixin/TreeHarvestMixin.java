@@ -35,7 +35,7 @@ public class TreeHarvestMixin {
                 List<BlockPos> list = TreeDetection.getTreeBlocks(world, pos);
                 if (list.size() == 1) return;
                 int i = 0;
-                for (; i <= list.size(); i++) {
+                for (; i != list.size(); i++) {
 
                     BlockPos blockPOS = list.get(i);
                     BlockState blockSTATE = world.getBlockState(blockPOS);
